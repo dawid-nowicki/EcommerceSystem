@@ -1,0 +1,46 @@
+<div>
+  <label for="localization" class="form-label">Localization</label>
+  <ng-autocomplete [data]="cities" [searchKeyword]="keyword" [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate" (inputChanged)='onChangeSearch($event)' id="localization"
+      (selected)='getInspiration($event)'>
+
+  </ng-autocomplete>
+
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item.city"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div>
+  </ng-template>
+  <div class="row">
+    <div id="localizationHelpBlock" class="form-text col">
+      Tell us where you are. We will check the weather and give you our outfit proposition!
+    </div>  
+  </div>
+</div>
+
+<div *ngFor="let cloth of inspiration">
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{cloth.imagePath}}" class="img-fluid rounded-start">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{cloth.name}}</h5>
+          <p class="card-text"><small class="text-muted">{{cloth.price}} $</small></p>
+        </div>
+        <button *ngIf="!cloth.isUserOwn" class=" btn btn-outline-secondary btn-width " (click)="buyCloth(cloth)">
+          BUY
+        </button>
+        <button *ngIf="cloth.isUserOwn" class=" btn btn-outline-secondary btn-width align-self-end" disabled>
+          OWNED
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<button *ngIf="hasNext()" class=" btn btn-outline-secondary btn-width align-self-end" (click)="goNext()">
+  SHOW NEXT!
+</button>

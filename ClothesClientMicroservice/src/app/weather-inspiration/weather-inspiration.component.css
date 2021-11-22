@@ -1,0 +1,14 @@
+
+.btn-width{
+    width: 100%;
+    align-self: flex-end;
+
+}
+.col-md-8{
+    display: flex;
+    flex-direction: column;
+
+}
+#localization{
+    width: 100%;
+}

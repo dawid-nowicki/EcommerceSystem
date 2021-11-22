@@ -1,0 +1,54 @@
+<div class=" d-grid gap-2 ">
+    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filters"
+        aria-expanded="false" aria-controls="filter">Filters</button>
+    <div class="collapse" id="filters">
+
+        <div class=" d-grid gap-2 ">
+            <button class=" btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+                data-bs-target="#catgories" aria-expanded="false" aria-controls="catgories">Category</button>
+            <div class="collapse btn-radio" id="catgories">
+                <div class="d-grid gap-1 ">
+                    <button type="radio" class="btn-check " name="options" id="all-category" autocomplete="off"
+                        (click)="getAllClothes()">
+                    </button>
+                    <label class="btn btn-secondary btn-radio" for="all-category">
+                        <td>
+                            ALL
+                        </td>
+                    </label>
+                    <tr *ngFor="let category of categories">
+                        <button type="radio" class="btn-check " name="options"
+                            id="{{category.categoryValue + 'Checkbox'}}" autocomplete="off"
+                            (click)="getClothesByCategory(category.id)">
+                        </button>
+                        <label class="btn btn-secondary btn-radio" for="{{category.categoryValue + 'Checkbox'}}">
+                            <td>
+                                {{category.categoryValue}}
+                            </td>
+                        </label>
+                    </tr>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="card-group">
+    <div *ngFor="let cloth of clothes" class="col-sm-3 d-flex align-items-stretch">
+        <div class="card ">
+            <img src="{{cloth.imagePath}}" class="card-img-top" alt="...">
+            <div class="card-body ">
+                <h5 class="card-title">{{cloth.name}}</h5>
+
+                <p class="card-text"><small class="text-muted">{{cloth.price}} $</small></p>
+            </div>
+            <button *ngIf="!cloth.isUserOwn" class=" btn btn-outline-secondary" (click)="buyCloth(cloth)">
+                BUY
+            </button>
+            <button *ngIf="cloth.isUserOwn" class=" btn btn-outline-secondary" disabled>
+                OWNED
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.icon-width{
+    width: 100px;
+  }
+  
+  .login-wrap{
+    max-width: 500px;
+    margin: auto;
+    margin-top: 1.5rem;
+    border: 2px solid gray;
+    border-radius: 2rem 1rem 3rem 1rem;
+    box-shadow: 0 0 2em  gray;
+  }
+  
+  
+  .form-control{
+    margin-top: 1em;
+  }

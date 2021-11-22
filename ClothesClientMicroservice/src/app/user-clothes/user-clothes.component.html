@@ -1,0 +1,12 @@
+<div class="card-group">
+    <div *ngFor="let cloth of clothes" class="col-sm-2 d-flex align-items-stretch ">
+            <div class="card ">
+                <img src="{{cloth.imagePath}}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{cloth.name}}</h5>
+
+                    <p class="card-text"><small class="text-muted">{{cloth.price}} $</small></p>
+                </div>
+        </div>
+    </div>
+</div>
